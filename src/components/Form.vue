@@ -7,39 +7,36 @@
         <ValidationObserver v-slot="{ handleSubmit }">
             <form @submit.prevent="handleSubmit(onSubmit)">
                 <ValidationProvider name="First Name" rules="required|alpha" v-slot="{ errors }">
-                    <div>
+                    <div class="input">
                         <v-text-field
                             label="First Name"
                             type="text"
                             v-model="formData.firstName"
                             outlined
-                            class="input"
                         ></v-text-field>
                         <span>{{errors[0]}}</span>
                     </div>
                 </ValidationProvider>
 
                 <ValidationProvider name="Last Name" rules="required|alpha" v-slot="{ errors }">
-                    <div>
+                    <div  class="input">
                         <v-text-field
                             label="Last Name"
                             type="text"
                             v-model="formData.lastName"
                             outlined
-                            class="input"
                         ></v-text-field>
                         <span>{{errors[0]}}</span>
                     </div>
                 </ValidationProvider>
 
                 <ValidationProvider name="Email" rules="required|email" v-slot="{ errors }">
-                    <div>
+                    <div class="input">
                         <v-text-field
                             label="Email"
                             type="email"
                             v-model="formData.email"
                             outlined
-                            class="input"
                         ></v-text-field>
                         <span>{{errors[0]}}</span>
                     </div>
@@ -48,12 +45,11 @@
                 <div class="full-phone">
 
                     <ValidationProvider name="Area Code" rules="required" v-slot="{ errors }">
-                        <div>
+                        <div class="area">
                             <v-select
                                 :items="formData.items"
                                 label="Area Code"
                                 outlined
-                                class="area"
                                 v-model="formData.areaCode"
 
                             ></v-select>
@@ -67,27 +63,28 @@
                                 label="Phone"
                                 type=number
                                 v-model="formData.phone"
-                                outlined
-                                class="phone"
+                                outlined 
                             ></v-text-field>
                             <span>{{errors[0]}}</span>
                         </div>
                     </ValidationProvider>
                 </div>
 
-                <ValidationProvider name="Password" rules="required|max:12|min:8|alpha_num" v-slot="{ errors }">
-                            <div>
-                                <v-text-field
-                                    label="Password"
-                                    type="password"
-                                    v-model="formData.password"
-                                    outlined
-                                    class="input"
-                                ></v-text-field>
-                                <span>{{errors[0]}}</span>
-                            </div>
-                        </ValidationProvider>
-                <input type="submit" tect="Submit">
+                    <ValidationProvider name="Password" rules="required|max:12|min:8|alpha_num" v-slot="{ errors }">
+                        <div class="input">
+                            <v-text-field
+                                label="Password"
+                                type="password"
+                                v-model="formData.password"
+                                outlined
+                                
+                            ></v-text-field>
+                            <span>{{errors[0]}}</span>
+                        </div>
+                    </ValidationProvider>
+                <div class="submit-btn">
+                    <input type="submit" tect="Submit">
+                </div>
             </form>
         </ValidationObserver>
     </v-card>
@@ -121,27 +118,35 @@ export default {
     .card-width {
         display: flex;
         flex-direction: column;
-        width: 400px;
+        align-items: center;
+        justify-content: center;
+        width: 400px !important;
         min-height: 500px;
-        margin: 0 auto
+        margin: 0 auto;
     }
 
     .input {
-        width: 90%;
+        margin: 15px;
     }
     .full-phone {
-        display: flex
+        display: flex;
+        margin: 15px;
+        align-content: space-around;
     }
 
     .area {
-        width: 25%;
+        /* width: 25%; */
+        width: 150px;
         margin-right: 10px;
-        border: 1px sold black;
-        width: 80px;
-        height: 60px;
+
     }
 
-    .phone {
-        width: 55%
+    .submit-btn {
+        display:flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color:aqua;
     }
 </style>
